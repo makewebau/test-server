@@ -32,7 +32,7 @@ use Zttp\Zttp;
 class MyExampleTest extends TestCase
 {
     /** @test */
-    public function a_get_request_to_test_returns_expected_response()
+    public function a_get_request_to_add_route_returns_sum_of_a_and_b_parameters_as_result()
     {
         // Set up how we want the test server to respond
         (new TestServer)->withRoute('get', 'add', function ($request) {

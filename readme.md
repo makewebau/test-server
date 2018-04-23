@@ -21,26 +21,28 @@ https://kitetail.co/
 
 ## Basic usage
 
-    <?php
+```php
 
-    use PHPUnit\Framework\TestCase;
-    use MakeWeb\TestServer\TestServer;
-    use Zttp\Zttp;
+<?php
 
-    class MyExampleTest extends TestCase
+use PHPUnit\Framework\TestCase;
+use MakeWeb\TestServer\TestServer;
+use Zttp\Zttp;
+
+class MyExampleTest extends TestCase
+{
+    /** @test */
+    public function a_get_request_to_test_returns_expected_response()
     {
-        /** @test */
-        public function a_get_request_to_test_returns_expected_response()
-        {
-            // Set up how we want the test server to respond
-            (new TestServer)->withRoute('get', 'add', function ($request) {
-                return response()->json(['result' => (int) $request->a + (int) $request->b]);
-            })->start();
+        // Set up how we want the test server to respond
+        (new TestServer)->withRoute('get', 'add', function ($request) {
+            return response()->json(['result' => (int) $request->a + (int) $request->b]);
+        })->start();
 
-            $response = Zttp::get('add', ['a' => 1, 'b' => 2]);
+        $response = Zttp::get('add', ['a' => 1, 'b' => 2]);
 
-            $this->assertEquals(3, $response->result);
-        }
+        $this->assertEquals(3, $response->result);
     }
-
+}
+```
 

@@ -1,0 +1,20 @@
+{
+    "name": "makeweb/test-server",
+    "description": "Create a simple HTTP server on your local environment capable of handling responses for test purposes",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Andrew Feeney",
+            "email": "webspannerdev@gmail.com"
+        }
+    ],
+    "require": {
+        "laravel/lumen-framework": "5.6.*",
+        "jeremeamia/superclosure": "^2.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "MakeWeb\\TestServer\\": "src/"
+        }
+    }
+}

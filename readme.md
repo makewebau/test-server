@@ -35,7 +35,7 @@ https://kitetail.co/
             // Set up how we want the test server to respond
             (new TestServer)->withRoute('get', 'add', function ($request) {
                 return response()->json(['result' => (int) $request->a + (int) $request->b]);
-            });
+            })->start();
 
             $response = Zttp::get('add', ['a' => 1, 'b' => 2]);
 

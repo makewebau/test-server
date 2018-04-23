@@ -2,8 +2,8 @@
 
 Test code which sends HTTP requests by spinning up an actual HTTP server on your local environment.
 
-The server serves a basic Lumen app served with PHP's built in development web server. You can the
-behaviour of the test server by adding routes with closures right in your test code. In this way
+The server serves a basic Lumen app served with PHP's built in development web server. You can then
+define the behaviour of the test server by adding routes with closures right in your test code. This way
 we can keep the test code which relies on specific server behaviour tightly coupled with the code
 which defines the behaviour.
 

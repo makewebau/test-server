@@ -8,7 +8,7 @@ we can keep the test code which relies on specific server behaviour tightly coup
 which defines the behaviour.
 
 The idea and original code was forked from the implementation of a web server for testing KiteTail's
-Zttp library by Adam Wathan et al. Do check out Zttp, and KiteTail.
+Zttp library by Adam Wathan. Do check out Zttp, and KiteTail.
 
 https://github.com/kitetail/zttp
 https://kitetail.co/

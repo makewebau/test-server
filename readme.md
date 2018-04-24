@@ -8,10 +8,7 @@ we can keep the test code which relies on specific server behaviour tightly coup
 which defines the behaviour.
 
 The idea and original code was forked from the implementation of a web server for testing KiteTail's
-Zttp library by Adam Wathan. Do check out Zttp, and KiteTail.
-
-https://github.com/kitetail/zttp
-https://kitetail.co/
+Zttp library by Adam Wathan. Do check out [Zttp](https://github.com/kitetail/zttp), and [KiteTail](https://kitetail.co/).
 
 ## Installation
 
@@ -21,26 +18,28 @@ https://kitetail.co/
 
 ## Basic usage
 
-    <?php
+```php
 
-    use PHPUnit\Framework\TestCase;
-    use MakeWeb\TestServer\TestServer;
-    use Zttp\Zttp;
+<?php
 
-    class MyExampleTest extends TestCase
+use PHPUnit\Framework\TestCase;
+use MakeWeb\TestServer\TestServer;
+use Zttp\Zttp;
+
+class MyExampleTest extends TestCase
+{
+    /** @test */
+    public function a_get_request_to_add_route_returns_sum_of_a_and_b_parameters_as_result()
     {
-        /** @test */
-        public function a_get_request_to_test_returns_expected_response()
-        {
-            // Set up how we want the test server to respond
-            (new TestServer)->withRoute('get', 'add', function ($request) {
-                return response()->json(['result' => (int) $request->a + (int) $request->b]);
-            });
+        // Set up how we want the test server to respond
+        (new TestServer)->withRoute('get', 'add', function ($request) {
+            return response()->json(['result' => (int) $request->a + (int) $request->b]);
+        })->start();
 
-            $response = Zttp::get('add', ['a' => 1, 'b' => 2]);
+        $response = Zttp::get('add', ['a' => 1, 'b' => 2]);
 
-            $this->assertEquals(3, $response->result);
-        }
+        $this->assertEquals(3, $response->result);
     }
-
+}
+```
 
